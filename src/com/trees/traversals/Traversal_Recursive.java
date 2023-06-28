@@ -1,6 +1,6 @@
 package com.trees.traversals;
 
-import com.trees.Node;
+import com.trees.TreeNode;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -9,18 +9,18 @@ import java.util.Queue;
 
 public class Traversal_Recursive {
     public static void main(String[] args) {
-        Node root = new Node(1);
-        root.left = new Node(2);
-        root.right = new Node(3);
-        root.left.left = new Node(4);
-        root.left.right = new Node(5);
-        root.right.left = new Node(6);
-        root.right.right = new Node(7);
+        TreeNode root = new TreeNode(1);
+        root.left = new TreeNode(2);
+        root.right = new TreeNode(3);
+        root.left.left = new TreeNode(4);
+        root.left.right = new TreeNode(5);
+        root.right.left = new TreeNode(6);
+        root.right.right = new TreeNode(7);
 
         solve(root);
     }
 
-    private static void solve(Node root) {
+    private static void solve(TreeNode root) {
         List<Integer> preOrder = new ArrayList<>();
         preOrderTraversal(root, preOrder);
         System.out.println("PreOrder " + preOrder);
@@ -38,8 +38,8 @@ public class Traversal_Recursive {
         System.out.println("LevelOrder " + levelOrder);
     }
 
-    private static void levelOrderTraversal(Node root, List<List<Integer>> levelOrder) {
-        Queue<Node> queue = new LinkedList<>();
+    private static void levelOrderTraversal(TreeNode root, List<List<Integer>> levelOrder) {
+        Queue<TreeNode> queue = new LinkedList<>();
         if (root == null) return;
         queue.add(root);
         while (!queue.isEmpty()) {
@@ -54,7 +54,7 @@ public class Traversal_Recursive {
         }
     }
 
-    private static void inOrderTraversal(Node root, List<Integer> inOrder) {
+    private static void inOrderTraversal(TreeNode root, List<Integer> inOrder) {
         if (root == null) return;
 
         inOrderTraversal(root.left, inOrder);
@@ -62,7 +62,7 @@ public class Traversal_Recursive {
         inOrderTraversal(root.right, inOrder);
     }
 
-    private static void postOrderTraversal(Node root, List<Integer> postOrder) {
+    private static void postOrderTraversal(TreeNode root, List<Integer> postOrder) {
         if (root == null) return;
 
         postOrderTraversal(root.left, postOrder);
@@ -71,7 +71,7 @@ public class Traversal_Recursive {
 
     }
 
-    private static void preOrderTraversal(Node root, List<Integer> preOrder) {
+    private static void preOrderTraversal(TreeNode root, List<Integer> preOrder) {
         if (root == null) return;
 
         preOrder.add(root.data);

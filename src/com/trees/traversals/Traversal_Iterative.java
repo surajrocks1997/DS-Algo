@@ -1,6 +1,6 @@
 package com.trees.traversals;
 
-import com.trees.Node;
+import com.trees.TreeNode;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,13 +8,13 @@ import java.util.Stack;
 
 public class Traversal_Iterative {
     public static void main(String[] args) {
-        Node root = new Node(1);
-        root.left = new Node(2);
-        root.right = new Node(3);
-        root.left.left = new Node(4);
-        root.left.right = new Node(5);
-        root.right.left = new Node(6);
-        root.right.right = new Node(7);
+        TreeNode root = new TreeNode(1);
+        root.left = new TreeNode(2);
+        root.right = new TreeNode(3);
+        root.left.left = new TreeNode(4);
+        root.left.right = new TreeNode(5);
+        root.right.left = new TreeNode(6);
+        root.right.right = new TreeNode(7);
 
         List<Integer> inOrder = inOrder(root);
         System.out.println("InOrder " + inOrder);
@@ -29,8 +29,8 @@ public class Traversal_Iterative {
         System.out.println("PostOrder 1 Stack " + postOrder1);
     }
 
-    private static List<Integer> postOrder1Stack(Node root) {
-        Stack<Node> stack = new Stack<>();
+    private static List<Integer> postOrder1Stack(TreeNode root) {
+        Stack<TreeNode> stack = new Stack<>();
         List<Integer> postOrder1 = new ArrayList<>();
         if (root == null) return postOrder1;
 
@@ -39,7 +39,7 @@ public class Traversal_Iterative {
                 stack.push(root);
                 root = root.left;
             } else {
-                Node temp = stack.peek().right;
+                TreeNode temp = stack.peek().right;
                 if (temp == null) {
                     temp = stack.peek();
                     stack.pop();
@@ -57,9 +57,9 @@ public class Traversal_Iterative {
         return postOrder1;
     }
 
-    private static List<Integer> postOrder2Stack(Node root) {
-        Stack<Node> stack1 = new Stack<>();
-        Stack<Node> stack2 = new Stack<>();
+    private static List<Integer> postOrder2Stack(TreeNode root) {
+        Stack<TreeNode> stack1 = new Stack<>();
+        Stack<TreeNode> stack2 = new Stack<>();
         List<Integer> postOrder2 = new ArrayList<>();
 
         if (root == null) return postOrder2;
@@ -77,8 +77,8 @@ public class Traversal_Iterative {
         return postOrder2;
     }
 
-    private static List<Integer> preOrder(Node root) {
-        Stack<Node> stack = new Stack<>();
+    private static List<Integer> preOrder(TreeNode root) {
+        Stack<TreeNode> stack = new Stack<>();
         List<Integer> preOrder = new ArrayList<>();
         if (root == null) return preOrder;
         stack.add(root);
@@ -92,11 +92,11 @@ public class Traversal_Iterative {
         return preOrder;
     }
 
-    private static List<Integer> inOrder(Node root) {
+    private static List<Integer> inOrder(TreeNode root) {
         List<Integer> inOrder = new ArrayList<>();
-        Stack<Node> stack = new Stack<>();
+        Stack<TreeNode> stack = new Stack<>();
 
-        Node node = root;
+        TreeNode node = root;
         while (true) {
             if (node != null) {
                 stack.push(node);

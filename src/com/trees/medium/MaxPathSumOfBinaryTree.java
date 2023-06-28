@@ -1,28 +1,28 @@
 package com.trees.medium;
 
-import com.trees.Node;
+import com.trees.TreeNode;
 
 public class MaxPathSumOfBinaryTree {
     public static void main(String[] args) {
-        Node root = new Node(1);
-        root.left = new Node(2);
-        root.right = new Node(3);
-        root.right.left = new Node(4);
-        root.right.right = new Node(6);
-        root.right.left.left = new Node(5);
+        TreeNode root = new TreeNode(1);
+        root.left = new TreeNode(2);
+        root.right = new TreeNode(3);
+        root.right.left = new TreeNode(4);
+        root.right.right = new TreeNode(6);
+        root.right.left.left = new TreeNode(5);
 
         int max = solve(root);
         System.out.println(max);
     }
 
-    private static int solve(Node root) {
+    private static int solve(TreeNode root) {
         int[] max = new int[1];
         max[0] = Integer.MIN_VALUE;
         solve(root, max);
         return max[0];
     }
 
-    private static int solve(Node root, int[] max) {
+    private static int solve(TreeNode root, int[] max) {
         if (root == null) return 0;
         int left = Math.max(0, solve(root.left, max));
         int right = Math.max(0, solve(root.right, max));

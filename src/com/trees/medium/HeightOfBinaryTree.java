@@ -1,18 +1,18 @@
 package com.trees.medium;
 
-import com.trees.Node;
+import com.trees.TreeNode;
 
 import java.util.LinkedList;
 import java.util.Queue;
 
 public class HeightOfBinaryTree {
     public static void main(String[] args) {
-        Node root = new Node(1);
-        root.left = new Node(2);
-        root.right = new Node(3);
-        root.right.left = new Node(4);
-        root.right.right = new Node(6);
-        root.right.left.left = new Node(5);
+        TreeNode root = new TreeNode(1);
+        root.left = new TreeNode(2);
+        root.right = new TreeNode(3);
+        root.right.left = new TreeNode(4);
+        root.right.right = new TreeNode(6);
+        root.right.left.left = new TreeNode(5);
 
         int result = solveRecursive(root);
         System.out.println("Recursive: " + result);
@@ -21,9 +21,9 @@ public class HeightOfBinaryTree {
         System.out.println("BFS: " + ans);
     }
 
-    private static int solveLevelOrder(Node root) {
+    private static int solveLevelOrder(TreeNode root) {
         if (root == null) return 0;
-        Queue<Node> queue = new LinkedList<>();
+        Queue<TreeNode> queue = new LinkedList<>();
         queue.add(root);
         int level = 0;
         while (!queue.isEmpty()) {
@@ -39,7 +39,7 @@ public class HeightOfBinaryTree {
         return level;
     }
 
-    private static int solveRecursive(Node root) {
+    private static int solveRecursive(TreeNode root) {
         if (root == null) return 0;
 
         int lh = solveRecursive(root.left);

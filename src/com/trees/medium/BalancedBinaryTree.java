@@ -1,25 +1,25 @@
 package com.trees.medium;
 
-import com.trees.Node;
+import com.trees.TreeNode;
 
 public class BalancedBinaryTree {
     public static void main(String[] args) {
-        Node root = new Node(1);
-        root.left = new Node(2);
-        root.right = new Node(3);
-        root.right.left = new Node(4);
-        root.right.right = new Node(6);
-        root.right.left.left = new Node(5);
+        TreeNode root = new TreeNode(1);
+        root.left = new TreeNode(2);
+        root.right = new TreeNode(3);
+        root.right.left = new TreeNode(4);
+        root.right.right = new TreeNode(6);
+        root.right.left.left = new TreeNode(5);
 
         boolean result = solve(root);
         System.out.println("Is Balanced: " + result);
     }
 
-    private static boolean solve(Node root) {
+    private static boolean solve(TreeNode root) {
         return dfs(root) != -1;
     }
 
-    private static int dfs(Node root) {
+    private static int dfs(TreeNode root) {
         if (root == null) return 0;
 
         int lh = dfs(root.left);
