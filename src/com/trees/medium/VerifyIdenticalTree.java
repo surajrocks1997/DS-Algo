@@ -17,8 +17,7 @@ public class VerifyIdenticalTree {
 
     private static boolean solve(TreeNode p, TreeNode q) {
         if (p == null && q == null) return true;
-        else if (p == null || q == null) return false;
-        else if (p.data != q.data) return false;
-        else return solve(p.left, q.left) && solve(p.right, q.right);
+
+        return (p.data == q.data) && solve(p.left, q.left) && solve(p.right, q.right);
     }
 }
