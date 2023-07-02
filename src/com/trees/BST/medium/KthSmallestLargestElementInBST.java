@@ -2,7 +2,7 @@ package com.trees.BST.medium;
 
 import com.trees.TreeNode;
 
-public class KthSmallestElementInBST {
+public class KthSmallestLargestElementInBST {
     public static void main(String[] args) {
         TreeNode root = new TreeNode(5);
         root.left = new TreeNode(3);
