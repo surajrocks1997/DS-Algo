@@ -14,7 +14,8 @@ public class DeleteANodeInBST {
         root.right.right = new TreeNode(14);
         root.right.right.left = new TreeNode(13);
 
-        TreeNode result = helper(root, 15);
+        int val = 15;
+        TreeNode result = helper(root, val);
         System.out.println(result.data);
     }
 
