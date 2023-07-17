@@ -37,11 +37,11 @@ public class FloorFillAlgorithm {
         int m = image.length;
         int n = image[0].length;
 
-        for(int i = 0; i<4; i++){
+        for (int i = 0; i < 4; i++) {
             int nrow = row + delrow[i];
             int ncol = col + delcol[i];
 
-            if(nrow >=0 && nrow < m && ncol >=0 && ncol <n && image[nrow][ncol] == iniColor
+            if (nrow >= 0 && nrow < m && ncol >= 0 && ncol < n && image[nrow][ncol] == iniColor
                     && ans[nrow][ncol] != color)
                 dfs(nrow, ncol, delrow, delcol, image, color, iniColor, ans);
         }
