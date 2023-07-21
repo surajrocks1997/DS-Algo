@@ -35,6 +35,7 @@ public class WordLadder_II {
                 level++;
                 for (String it : usedOnLevel)
                     set.remove(it);
+                usedOnLevel.clear();
             }
 
             String word = poll.get(poll.size() - 1);
