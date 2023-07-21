@@ -1,8 +1,6 @@
 package com.graph.medium;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 public class IsBipartite {
     public static void main(String[] args) {
