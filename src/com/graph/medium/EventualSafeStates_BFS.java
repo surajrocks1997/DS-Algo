@@ -2,7 +2,7 @@ package com.graph.medium;
 
 import java.util.*;
 
-public class EventualSafeStates {
+public class EventualSafeStates_BFS {
     public static void main(String[] args) {
         int[][] graph = {
                 {1, 2},
