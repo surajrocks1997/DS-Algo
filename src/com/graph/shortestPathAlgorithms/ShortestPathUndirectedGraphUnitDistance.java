@@ -1,4 +1,4 @@
-package com.graph.medium;
+package com.graph.shortestPathAlgorithms;
 
 import java.util.ArrayList;
 import java.util.Arrays;
