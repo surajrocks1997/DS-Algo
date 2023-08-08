@@ -1,4 +1,4 @@
-package com.dynamicProgramming.oneD;
+package com.dynamicProgramming.oneD.frogJump;
 
 import java.util.Arrays;
 

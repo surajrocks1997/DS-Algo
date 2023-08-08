@@ -1,6 +1,4 @@
-package com.dynamicProgramming.oneD;
-
-import java.util.Arrays;
+package com.dynamicProgramming.oneD.frogJump;
 
 public class FrogJump_Opt {
     public static void main(String[] args) {

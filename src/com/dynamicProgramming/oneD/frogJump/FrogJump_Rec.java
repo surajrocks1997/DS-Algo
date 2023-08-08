@@ -1,4 +1,4 @@
-package com.dynamicProgramming.oneD;
+package com.dynamicProgramming.oneD.frogJump;
 
 public class FrogJump_Rec {
     public static void main(String[] args) {
