@@ -1,7 +1,5 @@
 package com.dynamicProgramming.twoD.UniquePaths;
 
-import java.util.Arrays;
-
 public class UniquePaths_Tab {
     public static void main(String[] args) {
         int m = 3;
