@@ -6,26 +6,25 @@ import java.util.List;
 
 public class PartitionSet2SubsetMinAbsDiff_Rec {
     public static void main(String[] args) {
-        int[] nums = {3, 9, 7, 3};
+        int[] nums = {2, -1, 0, 4, -2, -9};
 
         int result = solve(nums);
         System.out.println(result);
     }
 
-//    all test cases not passed
     private static int solve(int[] nums) {
-        if (nums.length == 2) return Math.abs(nums[0] - nums[1]);
         int totalSum = Arrays.stream(nums).sum();
-        return solve(nums.length - 1, Integer.MAX_VALUE, nums, totalSum, 0);
+        return solve(nums.length - 1, nums.length / 2, 0, Integer.MAX_VALUE, totalSum, nums);
     }
 
-    private static int solve(int index, int mini, int[] nums, int totalSum, int currSum) {
-        if (index < 0)
-            return Math.min(mini, Math.abs(currSum - (totalSum - currSum)));
+    private static int solve(int index, int count, int sum, int mini, int totalSum, int[] nums) {
+        if (count == 0)
+            return Math.min(mini, Math.abs(sum - (totalSum - sum)));
+        if (index == 0 && count != 0)
+            return mini;
 
-        int pick = solve(index - 1, mini, nums, totalSum, currSum + nums[index]);
-        int notPick = solve(index - 1, mini, nums, totalSum, currSum);
-
+        int pick = solve(index - 1, count - 1, sum + nums[index], mini, totalSum, nums);
+        int notPick = solve(index - 1, count, sum, mini, totalSum, nums);
         return Math.min(pick, notPick);
     }
 }
