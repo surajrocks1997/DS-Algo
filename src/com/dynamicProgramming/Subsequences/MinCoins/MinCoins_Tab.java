@@ -12,11 +12,11 @@ public class MinCoins_Tab {
     private static int solve(int[] coins, int amount) {
         int n = coins.length;
         int[][] dp = new int[n][amount + 1];
-        for (int index = 0; index <= amount; index++) {
-            if (index % coins[0] == 0)
-                dp[0][index] = index / coins[0];
+        for (int target = 0; target <= amount; target++) {
+            if (target % coins[0] == 0)
+                dp[0][target] = target / coins[0];
             else
-                dp[0][index] = (int) 1e9;
+                dp[0][target] = (int) 1e9;
         }
 
         for (int index = 1; index < n; index++) {
