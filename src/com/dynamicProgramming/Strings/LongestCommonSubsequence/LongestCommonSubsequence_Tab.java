@@ -1,7 +1,5 @@
 package com.dynamicProgramming.Strings.LongestCommonSubsequence;
 
-import java.util.Arrays;
-
 public class LongestCommonSubsequence_Tab {
     public static void main(String[] args) {
         String text1 = "abcde";
