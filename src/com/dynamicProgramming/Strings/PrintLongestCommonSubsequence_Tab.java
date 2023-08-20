@@ -1,4 +1,4 @@
-package com.dynamicProgramming.Strings.PringLongestCommonSubsequence;
+package com.dynamicProgramming.Strings;
 
 public class PrintLongestCommonSubsequence_Tab {
     public static void main(String[] args) {
