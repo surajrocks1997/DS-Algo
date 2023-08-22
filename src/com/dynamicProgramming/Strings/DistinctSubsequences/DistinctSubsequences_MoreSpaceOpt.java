@@ -13,7 +13,7 @@ public class DistinctSubsequences_MoreSpaceOpt {
     private static int solve(String s, String t) {
         int m = s.length();
         int n = t.length();
-        int[] prev = new int[m + 1];
+        int[] prev = new int[n + 1];
         prev[0] = 1;
 
         for (int i = 1; i <= m; i++) {

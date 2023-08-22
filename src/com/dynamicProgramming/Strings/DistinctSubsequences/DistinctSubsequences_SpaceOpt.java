@@ -9,15 +9,15 @@ public class DistinctSubsequences_SpaceOpt {
         System.out.println(result);
     }
 
-//    not passing all test cases
+    //    not passing all test cases
     private static int solve(String s, String t) {
         int m = s.length();
         int n = t.length();
-        int[] prev = new int[m + 1];
+        int[] prev = new int[n + 1];
         prev[0] = 1;
 
         for (int i = 1; i <= m; i++) {
-            int[] curr = new int[m + 1];
+            int[] curr = new int[n + 1];
             curr[0] = 1;
             for (int j = 1; j <= n; j++) {
                 if (s.charAt(i - 1) == t.charAt(j - 1))
