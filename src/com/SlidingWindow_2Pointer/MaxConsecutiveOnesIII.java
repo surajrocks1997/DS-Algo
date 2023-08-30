@@ -10,25 +10,24 @@ public class MaxConsecutiveOnesIII {
     }
 
     private static int solve(int[] nums, int k) {
-        int i = 0;
-        int j = 0;
-
+        int windowEnd = 0;
+        int windowStart = 0;
         int maxi = 0;
 
-        while (i < nums.length) {
-            if (nums[i] == 1) {
-                i++;
-            } else if (nums[i] == 0 && k > 0) {
-                i++;
+        while (windowEnd < nums.length) {
+            if (nums[windowEnd] == 1) {
+                windowEnd++;
+            } else if (nums[windowEnd] == 0 && k > 0) {
+                windowEnd++;
                 k--;
-            } else if (nums[j] == 1) {
-                j++;
-            } else if (nums[j] == 0) {
-                j++;
+            } else if (nums[windowStart] == 1) {
+                windowStart++;
+            } else if (nums[windowStart] == 0) {
+                windowStart++;
                 k++;
             }
 
-            maxi = Math.max(maxi, i - j);
+            maxi = Math.max(maxi, windowEnd - windowStart);
         }
         return maxi;
     }
