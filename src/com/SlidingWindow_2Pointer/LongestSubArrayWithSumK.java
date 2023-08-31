@@ -1,4 +1,4 @@
-package com.arrays;
+package com.SlidingWindow_2Pointer;
 
 public class LongestSubArrayWithSumK {
     public static void main(String[] args) {
