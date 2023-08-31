@@ -9,7 +9,7 @@ public class longestSubArray_Pos_Neg {
     public static void main(String[] args) {
         int[] arr = {2, 0, 0, 3};
         int k = 3;
-        int result = longestSubarrayforPositiveArray(arr, k);
+        int result = longestSubArrayforPositiveArray(arr, k);
         System.out.println(result);
 
         result = longestSubArray_pos_neg(arr, k);
@@ -27,15 +27,17 @@ public class longestSubArray_Pos_Neg {
                 maxLength = Math.max(maxLength, i + 1);
             }
 
-            if (!preSumMap.containsKey(sum)) preSumMap.put(sum, i);
             if (preSumMap.containsKey(sum - k)) {
-                maxLength = Math.max(maxLength, i - preSumMap.get(sum - k));
+                int len = i - preSumMap.get(sum - k);
+                maxLength = Math.max(maxLength, len);
             }
+
+            if (!preSumMap.containsKey(sum)) preSumMap.put(sum, i);
         }
         return maxLength;
     }
 
-    private static int longestSubarrayforPositiveArray(int[] arr, int k) {
+    private static int longestSubArrayforPositiveArray(int[] arr, int k) {
         int right = 0;
         int left = 0;
         int sum = arr[0];
