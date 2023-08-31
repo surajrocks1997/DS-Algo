@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 //separate solution positive + negative
-public class longestSubArray_Positive {
+public class longestSubArray_Pos_Neg {
 
     public static void main(String[] args) {
         int[] arr = {2, 0, 0, 3};
@@ -12,11 +12,11 @@ public class longestSubArray_Positive {
         int result = longestSubarrayforPositiveArray(arr, k);
         System.out.println(result);
 
-        result = longestSubarray(arr, k);
+        result = longestSubArray_pos_neg(arr, k);
         System.out.println(result);
     }
 
-    private static int longestSubarray(int[] arr, int k) {
+    private static int longestSubArray_pos_neg(int[] arr, int k) {
         Map<Integer, Integer> preSumMap = new HashMap<>();
         int sum = 0;
         int maxLength = 0;
