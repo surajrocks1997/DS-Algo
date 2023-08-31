@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 //separate solution positive + negative
-public class longestSubArray {
+public class longestSubArray_Pos_Neg {
 
     public static void main(String[] args) {
         int[] arr = {2, 0, 0, 3};
