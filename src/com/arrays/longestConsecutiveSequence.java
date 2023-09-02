@@ -12,27 +12,31 @@ public class longestConsecutiveSequence {
     }
 
     private static int solve(int[] arr) {
-        Set<Integer> hashSet = new HashSet<Integer>();
+        Set<Integer> set = new HashSet<Integer>();
         for (int num : arr) {
-            hashSet.add(num);
+            set.add(num);
         }
 
-        int longestStreak = 0;
+        int max = 0;
 
-        for (int num : arr) {
-            if (!hashSet.contains(num - 1)) {
-                int currentNum = num;
-                int currentStreak = 1;
-
-                while (hashSet.contains(currentNum + 1)) {
-                    currentNum += 1;
-                    currentStreak += 1;
-                }
-
-                longestStreak = Math.max(longestStreak, currentStreak);
+        for (int j : arr) {
+            int count = 1;
+            int num = j;
+            while (set.contains(--num)) {
+                count++;
+                set.remove(num);
             }
+
+            num = j;
+            while (set.contains(++num)) {
+                count++;
+                set.remove(num);
+            }
+
+            max = Math.max(max, count);
+
         }
 
-        return longestStreak;
+        return max;
     }
 }
