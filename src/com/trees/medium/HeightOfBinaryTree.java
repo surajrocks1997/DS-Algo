@@ -42,8 +42,8 @@ public class HeightOfBinaryTree {
     private static int solveRecursive(TreeNode root) {
         if (root == null) return 0;
 
-        int lh = 1 + solveRecursive(root.left);
-        int rh = 1 + solveRecursive(root.right);
-        return Math.max(lh, rh);
+        int lh = solveRecursive(root.left);
+        int rh = solveRecursive(root.right);
+        return 1 + Math.max(lh, rh);
     }
 }
