@@ -24,7 +24,6 @@ public class DFS_Graph {
     private static ArrayList<Integer> solve(int V, ArrayList<ArrayList<Integer>> adj) {
         ArrayList<Integer> dfs = new ArrayList<>();
         boolean[] vis = new boolean[V];
-        vis[0] = true;
         dfs(0, vis, adj, dfs);
         return dfs;
     }
