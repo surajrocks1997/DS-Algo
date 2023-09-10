@@ -43,7 +43,7 @@ public class DetectCycleInUnDirectedGraph_DFS {
             if (!vis[adjNode]) {
                 if (dfs(adjNode, src, adj, vis))
                     return true;
-            } else if (adjNode != parent)
+            } else if (vis[adjNode] && adjNode != parent)
                 return true;
         }
         return false;
