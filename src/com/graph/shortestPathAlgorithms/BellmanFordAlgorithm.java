@@ -34,7 +34,7 @@ public class BellmanFordAlgorithm {
                 int v = it.get(1);
                 int wt = it.get(2);
 
-                if (distance[u] + wt < distance[v])
+                if (distance[u] != 1e8 && distance[u] + wt < distance[v])
                     distance[v] = distance[u] + wt;
             }
         }
