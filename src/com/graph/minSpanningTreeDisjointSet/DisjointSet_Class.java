@@ -9,7 +9,7 @@ public class DisjointSet_Class {
     List<Integer> size = new ArrayList<>();
 
     public DisjointSet_Class(int n) {
-        for (int i = 0; i < n + 1; i++) {    // for 1 based indexing -> n+1
+        for (int i = 0; i < n + 1; i++) {    // for 1 based indexing -> n+1 declaring n+1 works for both 0 and 1 based indexing
             rank.add(0);
             parent.add(i);
             size.add(1);
