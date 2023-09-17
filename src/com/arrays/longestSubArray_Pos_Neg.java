@@ -16,7 +16,7 @@ public class longestSubArray_Pos_Neg {
         System.out.println(result);
     }
 
-    private static int longestSubArray_pos_neg(int[] arr, int k) {
+    private static int longestSubArray_pos_neg(int[] arr, int k) { // this method works for pos, negative and zeros
         Map<Integer, Integer> preSumMap = new HashMap<>();
         int sum = 0;
         int maxLength = 0;
