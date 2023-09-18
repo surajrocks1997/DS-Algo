@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.PriorityQueue;
 
-public class ShortestPathInWeightedUndirectedGraph {
+public class Print_ShortestPathInWeightedUndirectedGraph {
     public static void main(String[] args) {
         int n = 5;
         int m = 6;
