@@ -26,13 +26,10 @@ public class CountSubsequenceWithSumK {
             return 0;
         }
 
-        sum += arr[index];
-        int left = solve(arr, index + 1, sum, k);
+        int take = solve(arr, index + 1, sum + arr[index], k);
+        int notTake = solve(arr, index + 1, sum, k);
 
-        sum -= arr[index];
-        int right = solve(arr, index + 1, sum, k);
-
-        return left + right;
+        return take + notTake;
 
     }
 }
