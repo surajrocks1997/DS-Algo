@@ -1,4 +1,4 @@
-package com.greedy.medium;
+package com.heap;
 
 import java.util.PriorityQueue;
 
