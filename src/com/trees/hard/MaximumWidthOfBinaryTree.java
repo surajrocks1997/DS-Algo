@@ -19,33 +19,30 @@ public class MaximumWidthOfBinaryTree {
     }
 
     private static int solve(TreeNode root) {
-        if (root == null) return 0;
         Queue<Pair> queue = new LinkedList<>();
-        int width = 0;
-        queue.add(new Pair(root, width));
+        queue.add(new Pair(root, 0));
+        int width = -1;
 
-        while (!queue.isEmpty()) {
+        while(!queue.isEmpty()){
             int size = queue.size();
-            int mMin = queue.peek().num;
+            int min = queue.peek().index;
 
-//            below first and last are required to calculate max width on that level
-            int first = 0; //first node on that level
-            int last = 0; // last node on that level
+            int first = 0;
+            int last = 0;
 
-            for (int i = 0; i < size; i++) {
-                int current = queue.peek().num - mMin;
-                TreeNode node = queue.peek().node;
-                queue.poll();
-                if (i == 0) first = current;
-                if (i == size - 1) last = current;
-                if (node.left != null)
-                    queue.add(new Pair(node.left, (current * 2) + 1));
-                if (node.right != null)
-                    queue.add(new Pair(node.right, (current * 2) + 2));
+            for(int i = 0; i < size; i++){
+                Pair poll = queue.poll();
+                int current = poll.index - min;
+
+                if(i == 0) first = current;
+                if(i == size-1) last = current;
+
+                if(poll.node.left != null) queue.add(new Pair(poll.node.left, (2 * current) + 1));
+                if(poll.node.right != null) queue.add(new Pair(poll.node.right, (2 * current) + 2));
             }
-            width = Math.max(width, last - first + 1);
-        }
 
+            width = Math.max(width, last-first+1);
+        }
         return width;
     }
 }
@@ -53,10 +50,10 @@ public class MaximumWidthOfBinaryTree {
 class Pair {
 
     TreeNode node;
-    int num;
+    int index;
 
-    public Pair(TreeNode node, int num) {
+    public Pair(TreeNode node, int index) {
         this.node = node;
-        this.num = num;
+        this.index = index;
     }
 }
