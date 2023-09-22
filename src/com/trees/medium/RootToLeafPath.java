@@ -15,19 +15,18 @@ public class RootToLeafPath {
         root.left.right = new TreeNode(5);
         root.left.right.left = new TreeNode((7));
 
-        int val = 6;
-        List<List<Integer>> result = solve(root, val);
+        List<List<Integer>> result = solve(root);
         System.out.println(result);
     }
 
-    private static List<List<Integer>> solve(TreeNode root, int val) {
+    private static List<List<Integer>> solve(TreeNode root) {
         List<List<Integer>> result = new ArrayList<>();
         if (root == null) return result;
-        solve(root, val, result, new ArrayList<>());
+        solve(root, result, new ArrayList<>());
         return result;
     }
 
-    private static void solve(TreeNode root, int val, List<List<Integer>> result, List<Integer> current) {
+    private static void solve(TreeNode root, List<List<Integer>> result, List<Integer> current) {
         if (root == null) return;
         current.add(root.data);
         if (isLeaf(root)) {
@@ -35,8 +34,8 @@ public class RootToLeafPath {
             return;
         }
 
-        solve(root.left, val, result, new ArrayList<>(current));
-        solve(root.right, val, result, new ArrayList<>(current));
+        solve(root.left, result, new ArrayList<>(current));
+        solve(root.right, result, new ArrayList<>(current));
 
     }
 
