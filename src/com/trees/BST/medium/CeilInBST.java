@@ -34,3 +34,17 @@ public class CeilInBST {
         return ceil;
     }
 }
+
+// another working soluton
+
+//    int ceil = -1;
+//        while(root != null){
+//                if(root.data >= x){
+//                ceil = root.data;
+//                root = root.left;
+//                } else{
+//                root = root.right;
+//                }
+//                }
+//
+//                return ceil;
