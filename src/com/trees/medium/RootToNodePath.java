@@ -15,14 +15,13 @@ public class RootToNodePath {
         root.left.right = new TreeNode(5);
         root.left.right.left = new TreeNode((7));
 
-        int val = 6;
+        int val = 5;
         List<Integer> result = solve(root, val);
         System.out.println(result);
     }
 
     private static List<Integer> solve(TreeNode root, int val) {
         List<Integer> result = new ArrayList<>();
-        if (root == null) return result;
         solve(root, val, result);
         return result;
     }
@@ -32,11 +31,14 @@ public class RootToNodePath {
         result.add(root.data);
         if (root.data == val) return true;
 
-        if (solve(root.left, val, result) || solve(root.right, val, result))
-            return true;
+        if (solve(root.left, val, result)) return true;
+        if (solve(root.right, val, result)) return true;
 
         result.remove(result.size() - 1);
-
         return false;
+    }
+
+    private static boolean isLeaf(TreeNode root) {
+        return root.left == null && root.right == null;
     }
 }
