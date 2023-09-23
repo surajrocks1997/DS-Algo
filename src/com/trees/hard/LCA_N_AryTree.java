@@ -29,27 +29,31 @@ public class LCA_N_AryTree {
 
         int V = 14;
 
-        int result = solve(root, 12, 14, V);
+        int result = solve(root, 1, 14, V);
         System.out.println(result);
     }
 
     private static int solve(Node root, int p, int q, int V) {
         List<List<Integer>> adj = new ArrayList<>();
-        for (int i = 0; i < V; i++) {
+        for (int i = 0; i <= V; i++) {
             adj.add(new ArrayList<>());
         }
         createAdj(adj, root);
         List<List<Integer>> result = new ArrayList<>();
         dfs(adj, root.val, new ArrayList<>(), p, q, result);
+        System.out.println(result);
+
+        if (result.size() == 1) return result.get(0).get(result.get(0).size() - 1);
 
         List<Integer> lca1 = result.get(0);
         List<Integer> lca2 = result.get(1);
+
         int i = 0;
-        while(lca1.get(i).equals(lca2.get(i))){
+        while (lca1.get(i).equals(lca2.get(i))) {
             i++;
         }
 
-        return lca1.get(i-1);
+        return lca1.get(i - 1);
     }
 
     private static void dfs(List<List<Integer>> adj, int node, List<Integer> curr, int p, int q, List<List<Integer>> result) {
