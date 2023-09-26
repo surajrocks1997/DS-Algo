@@ -44,6 +44,18 @@ class Trie {
         }
         return true;
     }
+
+    public boolean prefixExist(String word) {
+        boolean flag = true;
+        Node node = root;
+        for (int i = 0; i < word.length(); i++) {
+            if (node.containsKey(word.charAt(i))) {
+                node = node.get(word.charAt(i));
+                if (!node.isEnd()) return false;
+            } else return false;
+        }
+        return flag;
+    }
 }
 
 class Node {
