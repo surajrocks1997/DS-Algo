@@ -20,8 +20,10 @@ public class longestConsecutiveSequence {
         int max = 0;
 
         for (int j : arr) {
+            if (!set.contains(j)) continue;
             int count = 1;
             int num = j;
+            set.remove(j);
             while (set.contains(--num)) {
                 count++;
                 set.remove(num);
