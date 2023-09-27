@@ -29,25 +29,28 @@ public class MergeKSortedList {
     }
 
     private static ListNode solve(ListNode[] lists) {
-        if (lists == null || lists.length == 0) return null;
-        PriorityQueue<ListNode> minHeapQ = new PriorityQueue<>((a, b) -> a.val - b.val);
+        if(lists == null || lists.length == 0) return null;
 
-        ListNode dummy = new ListNode(0);
-        ListNode tail = dummy;
-
-        for (ListNode node : lists) {
-            if (node != null)
-                minHeapQ.add(node);
+        PriorityQueue<ListNode> minHeap = new PriorityQueue<>((a,b) -> a.val - b.val);
+        for(ListNode node: lists){
+            if(node != null){
+                minHeap.add(node);
+            }
         }
 
-        while (!minHeapQ.isEmpty()) {
-            tail.next = minHeapQ.poll();
+        ListNode dummyNode = new ListNode(0);
+        ListNode tail = dummyNode;
+
+        while(!minHeap.isEmpty()){
+            ListNode poll = minHeap.poll();
+            tail.next = poll;
             tail = tail.next;
 
-            if (tail.next != null)
-                minHeapQ.add(tail.next);
+            if(poll.next != null){
+                minHeap.add(poll.next);
+            }
         }
-        return dummy.next;
+        return dummyNode.next;
     }
 }
 
