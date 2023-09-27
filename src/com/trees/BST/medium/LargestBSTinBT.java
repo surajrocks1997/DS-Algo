@@ -28,19 +28,19 @@ public class LargestBSTinBT {
         NodeMetaData left = largestBSTSubtreeHelper(root.left);
         NodeMetaData right = largestBSTSubtreeHelper(root.right);
 
-        if (root.data > left.maxNode && root.data < right.minNode)
-            return new NodeMetaData(Math.min(root.data, left.minNode),
-                    Math.max(root.data, right.maxNode), left.maxSize + right.maxSize + 1);
+        if (root.data > left.max && root.data < right.min)
+            return new NodeMetaData(Math.min(root.data, left.min),
+                    Math.max(root.data, right.max), left.maxSize + right.maxSize + 1);
         else return new NodeMetaData(Integer.MIN_VALUE, Integer.MAX_VALUE, Math.max(left.maxSize, right.maxSize));
     }
 }
 
 class NodeMetaData {
-    public int maxNode, minNode, maxSize;
+    public int min, max, maxSize;
 
-    public NodeMetaData(int minNode, int maxNode, int maxSize) {
-        this.maxNode = maxNode;
-        this.minNode = minNode;
+    public NodeMetaData(int min, int max, int maxSize) {
+        this.min = min;
+        this.max = max;
         this.maxSize = maxSize;
     }
 }
