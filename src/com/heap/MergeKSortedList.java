@@ -30,7 +30,7 @@ public class MergeKSortedList {
 
     private static ListNode solve(ListNode[] lists) {
         if (lists == null || lists.length == 0) return null;
-        PriorityQueue<ListNode> minHeapQ = new PriorityQueue<>(lists.length, (a, b) -> a.val - b.val);
+        PriorityQueue<ListNode> minHeapQ = new PriorityQueue<>((a, b) -> a.val - b.val);
 
         ListNode dummy = new ListNode(0);
         ListNode tail = dummy;
