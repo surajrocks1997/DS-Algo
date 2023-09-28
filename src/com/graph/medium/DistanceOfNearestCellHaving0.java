@@ -27,12 +27,12 @@ public class DistanceOfNearestCellHaving0 {
         int[][] vis = new int[m][n];
         int[][] distanceGrid = new int[m][n];
 
-        Queue<Thruple_DistanceOfNearestCellHaving1> queue = new LinkedList<>();
+        Queue<Thruple_DistanceOfNearestCellHaving0> queue = new LinkedList<>();
 
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
                 if (grid[i][j] == 0) {
-                    queue.add(new Thruple_DistanceOfNearestCellHaving1(i, j, 0));
+                    queue.add(new Thruple_DistanceOfNearestCellHaving0(i, j, 0));
                     vis[i][j] = 1;
                 }
             }
@@ -42,7 +42,7 @@ public class DistanceOfNearestCellHaving0 {
         int[] delcol = {0, 1, 0, -1};
 
         while (!queue.isEmpty()) {
-            Thruple_DistanceOfNearestCellHaving1 thrup = queue.poll();
+            Thruple_DistanceOfNearestCellHaving0 thrup = queue.poll();
             int row = thrup.first;
             int col = thrup.second;
             int distance = thrup.third;
@@ -55,7 +55,7 @@ public class DistanceOfNearestCellHaving0 {
                 if (nrow >= 0 && nrow < m && ncol >= 0 && ncol < n &&
                         vis[nrow][ncol] == 0) {
                     vis[nrow][ncol] = 1;
-                    queue.add(new Thruple_DistanceOfNearestCellHaving1(nrow, ncol, distance + 1));
+                    queue.add(new Thruple_DistanceOfNearestCellHaving0(nrow, ncol, distance + 1));
                 }
             }
         }
@@ -65,12 +65,12 @@ public class DistanceOfNearestCellHaving0 {
     }
 }
 
-class Thruple_DistanceOfNearestCellHaving1 {
+class Thruple_DistanceOfNearestCellHaving0 {
     int first;
     int second;
     int third;
 
-    public Thruple_DistanceOfNearestCellHaving1(int first, int second, int third) {
+    public Thruple_DistanceOfNearestCellHaving0(int first, int second, int third) {
         this.first = first;
         this.second = second;
         this.third = third;
