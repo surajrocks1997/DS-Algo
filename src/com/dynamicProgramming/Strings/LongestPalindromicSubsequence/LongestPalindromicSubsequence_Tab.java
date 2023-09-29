@@ -1,6 +1,8 @@
-package com.dynamicProgramming.Strings;
+package com.dynamicProgramming.Strings.LongestPalindromicSubsequence;
 
-public class LongestPalindromicSubsequence {
+import java.util.Arrays;
+
+public class LongestPalindromicSubsequence_Tab {
     public static void main(String[] args) {
         String s = "bbbab";
 
@@ -11,20 +13,17 @@ public class LongestPalindromicSubsequence {
 
     private static int solve(String s) {
         StringBuilder sb = new StringBuilder(s);
-        return solve(s, sb.reverse().toString());
-    }
-
-    private static int solve(String text1, String text2) {
-        int m = text1.length();
-        int n = text2.length();
+        String sReverse = sb.reverse().toString();
+        int m = s.length();
+        int n = sReverse.length();
         int[][] dp = new int[m + 1][n + 1];
 
-        for (int i = 0; i <= m; i++) dp[i][0] = 0;
         for (int i = 0; i <= n; i++) dp[0][i] = 0;
+        for (int i = 0; i <= m; i++) dp[i][0] = 0;
 
         for (int index1 = 1; index1 <= m; index1++) {
             for (int index2 = 1; index2 <= n; index2++) {
-                if (text1.charAt(index1 - 1) == text2.charAt(index2 - 1))
+                if (s.charAt(index1 - 1) == sReverse.charAt(index2 - 1))
                     dp[index1][index2] = 1 + dp[index1 - 1][index2 - 1];
 
                 else dp[index1][index2] = Math.max(dp[index1 - 1][index2], dp[index1][index2 - 1]);
