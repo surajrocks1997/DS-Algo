@@ -1,4 +1,4 @@
-package com.dynamicProgramming.Strings;
+package com.dynamicProgramming.Strings.LongestCommonSubstring;
 
 public class LongestCommonSubstring {
     public static void main(String[] args) {
