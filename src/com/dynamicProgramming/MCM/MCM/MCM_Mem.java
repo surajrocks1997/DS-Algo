@@ -1,4 +1,4 @@
-package com.dynamicProgramming.MCM;
+package com.dynamicProgramming.MCM.MCM;
 
 import java.util.Arrays;
 

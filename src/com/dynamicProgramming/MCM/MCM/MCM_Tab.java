@@ -1,4 +1,4 @@
-package com.dynamicProgramming.MCM;
+package com.dynamicProgramming.MCM.MCM;
 
 public class MCM_Tab {
     public static void main(String[] args) {
