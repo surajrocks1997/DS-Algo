@@ -1,4 +1,4 @@
-package com.dynamicProgramming.MCM.MCM;
+package com.dynamicProgramming.PartitionDP.MCM;
 
 import java.util.Arrays;
 

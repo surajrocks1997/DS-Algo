@@ -1,4 +1,4 @@
-package com.dynamicProgramming.MCM.MinCostToCutStick;
+package com.dynamicProgramming.PartitionDP.MinCostToCutStick;
 
 import java.util.ArrayList;
 import java.util.Arrays;

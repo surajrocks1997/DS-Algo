@@ -1,4 +1,4 @@
-package com.dynamicProgramming.MCM.MCM;
+package com.dynamicProgramming.PartitionDP.MCM;
 
 public class MCM_Rec {
     public static void main(String[] args) {
