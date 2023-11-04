@@ -3,6 +3,7 @@ package com.arrays;
 import java.util.HashMap;
 import java.util.Map;
 
+// https://leetcode.com/problems/count-number-of-nice-subarrays/
 public class CountNumberOfNiceArrays {
     public static void main(String[] args) {
         int[] nums = {2,2,2,1,2,2,1,2,2,2};
