@@ -1,6 +1,7 @@
 package com.graph.medium;
 
-public class FloorFillAlgorithm {
+// https://leetcode.com/problems/flood-fill/
+public class FloodFillAlgorithm {
     public static void main(String[] args) {
         int[][] image = {
                 {1, 1, 1},
