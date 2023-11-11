@@ -36,7 +36,7 @@ class Trie_MaxXOROfTwoNumberInArray {
     public void insert(int num) {
         Node_MaxXOROfTwoNumberInArray node = root;
         for (int i = 31; i >= 0; i--) {
-            int bit = (num >> i) & 1;
+            int bit = (num >> i) & 1;   // to find ith bit of num is 0 or 1
             if (!node.containsKey(bit)) {
                 node.put(bit, new Node_MaxXOROfTwoNumberInArray());
             }
@@ -48,9 +48,9 @@ class Trie_MaxXOROfTwoNumberInArray {
         Node_MaxXOROfTwoNumberInArray node = root;
         int maxNum = 0;
         for (int i = 31; i >= 0; i--) {
-            int bit = (num >> i) & 1;
-            if (node.containsKey(1 - bit)) {
-                maxNum = maxNum | (1 << i);
+            int bit = (num >> i) & 1;   // to find ith bit of num is 0 or 1
+            if (node.containsKey(1 - bit)) {    // 1 - bit because in xor, diff ele gives 1 (1^0=1, 1^1=0), so we need different bit in ith position
+                maxNum = maxNum | (1 << i);     // making ith bit of maxNum as 1
                 node = node.get(1 - bit);
             } else {
                 node = node.get(bit);
