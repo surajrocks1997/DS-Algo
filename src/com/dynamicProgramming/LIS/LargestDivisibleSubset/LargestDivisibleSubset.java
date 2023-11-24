@@ -1,4 +1,4 @@
-package com.dynamicProgramming.LIS;
+package com.dynamicProgramming.LIS.LargestDivisibleSubset;
 
 import java.util.ArrayList;
 import java.util.Arrays;
