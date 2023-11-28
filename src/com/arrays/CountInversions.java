@@ -1,4 +1,4 @@
-package com.recursion.hard;
+package com.arrays;
 
 import java.util.ArrayList;
 import java.util.List;
