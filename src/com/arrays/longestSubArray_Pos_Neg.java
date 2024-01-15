@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 //separate solution positive + negative
+// https://www.youtube.com/watch?v=frf7qxiN2qU&t=1s
 public class longestSubArray_Pos_Neg {
 
     public static void main(String[] args) {
