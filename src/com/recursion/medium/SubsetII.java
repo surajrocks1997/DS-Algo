@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class SubsetSumII {
+public class SubsetII {
     public static void main(String[] args) {
         int[] arr = {1, 2, 2};
         List<List<Integer>> result = solve(arr);
