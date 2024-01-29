@@ -31,7 +31,7 @@ class MyQueue {
 
         stack1.push(x);
         while (!stack2.isEmpty())
-            stack1.add(stack2.pop());
+            stack1.push(stack2.pop());
     }
 
     public int pop() {
