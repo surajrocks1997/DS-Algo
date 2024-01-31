@@ -59,14 +59,14 @@ public class MakingLargeIsland {
             }
 
             for (int ele : set) {
-                size += ds.size.get(ele);   // if size gives error, make disjoint set class SIZE property public
+                size += ds.getSize().get(ele);   // if size gives error, make disjoint set class SIZE property public
             }
             maxSize = Math.max(maxSize, size);
         }
 
         if (cellWithZeroes.isEmpty()) {
             for (int cellNo = 0; cellNo < n * n; cellNo++) {
-                maxSize = Math.max(maxSize, ds.size.get(ds.findUltimateParent(cellNo)));
+                maxSize = Math.max(maxSize, ds.getSize().get(ds.findUltimateParent(cellNo)));
             }
         }
 
