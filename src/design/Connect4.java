@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class Connect4 {
     public static void main(String[] args) {
-        Grid grid = new Grid(6, 6);
+        Grid grid = new Grid(6, 7);
         Game game = new Game(grid, 4, 1);
         game.play();
     }
