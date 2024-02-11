@@ -55,3 +55,50 @@ public class CherryPickupII_Mem {
         return dp[i][j1][j2] = maxi;
     }
 }
+
+// another readable solution
+
+//class Solution {
+//    public int cherryPickup(int[][] grid) {
+//        int m = grid.length;
+//        int n = grid[0].length;
+//
+//        int[][][] dp = new int[m][n][n];
+//        for(int[][] twoD: dp){
+//            for(int[] rows: twoD){
+//                Arrays.fill(rows, -1);
+//            }
+//        }
+//
+//        return solve(0, 0, n-1, grid, m, n, dp);
+//    }
+//
+//    private static int solve(int row, int r0col, int r1col, int[][] grid, int m, int n, int[][][] dp){
+//        if(row == m-1){
+//            if(r0col == r1col) return grid[row][r0col];
+//            else return grid[row][r0col] + grid[row][r1col];
+//        }
+//
+//        if(dp[row][r0col][r1col] != -1) return dp[row][r0col][r1col];
+//
+//        int max = Integer.MIN_VALUE;
+//        for(int dr0 = -1; dr0 <= 1; dr0++){
+//            for(int dr1 = -1; dr1 <= 1; dr1++){
+//
+//                int value = 0;
+//                if(r0col == r1col) value = grid[row][r0col];
+//                else value = grid[row][r0col] + grid[row][r1col];
+//
+//                int nr0col = r0col + dr0;
+//                int nr1col = r1col + dr1;
+//
+//                if(nr0col >= 0 && nr0col < n && nr1col >= 0 && nr1col < n){
+//                    value += solve(row+1, nr0col, nr1col, grid, m, n, dp);
+//                    max = Math.max(max, value);
+//                }
+//            }
+//        }
+//
+//        return dp[row][r0col][r1col] = max;
+//    }
+//}
