@@ -6,8 +6,6 @@ import java.util.List;
 import java.util.PriorityQueue;
 
 // https://leetcode.com/problems/meeting-rooms-iii/description
-
-// ans is correct but not passing 2 test cases because of long input in meeting end times. could not resolve those 2 test cases
 public class MeetingRoomsIII {
 
     public static void main(String[] args) {
@@ -26,15 +24,16 @@ public class MeetingRoomsIII {
     }
 
     private static int solve(int[][] meetings, int n) {
-        Arrays.sort(meetings, (a, b) -> a[0] - b[0]);
+        Arrays.sort(meetings, (a, b) -> a[0] != b[0] ? a[0] - b[0] : a[1] - b[1]);
         PriorityQueue<RoomDetail> availQ = new PriorityQueue<>((a, b) -> Integer.compare(a.roomNo, b.roomNo));
-        PriorityQueue<BusyQ> busyQ = new PriorityQueue<>((a, b) -> Long.compare(a.endTime, b.endTime));
+        PriorityQueue<BusyQ> busyQ = new PriorityQueue<>((a, b) ->
+                a.endTime != b.endTime ? Long.compare(a.endTime, b.endTime) : a.roomDetail.roomNo - b.roomDetail.roomNo);
 
         for (int i = 0; i < n; i++) availQ.add(new RoomDetail(i, 0));
 
         for (int[] meetingTime : meetings) {
-            int currentStart = meetingTime[0];
-            Long currentEnd = (long) meetingTime[1];
+            long currentStart = meetingTime[0];
+            long currentEnd = (long) meetingTime[1];
 
             while (!busyQ.isEmpty() && busyQ.peek().endTime <= currentStart) {
                 BusyQ pollBusy = busyQ.poll();
@@ -45,16 +44,8 @@ public class MeetingRoomsIII {
                 Long duration = currentEnd - currentStart;
                 Long newStart = busyQ.peek().endTime;
 
-                // when rooms are not available, next meeting will be scheduled when busy rooms get free.
-                // multiple rooms can get free at the same time
-                while (!busyQ.isEmpty() && busyQ.peek().endTime == newStart) {
-                    BusyQ pollBusy = busyQ.poll();
-                    availQ.add(pollBusy.roomDetail);
-                }
-
-                // now that rooms are free, we put the current meeting to room with smaller Room No.
-                RoomDetail pollAvail = availQ.poll();
-                busyQ.add(new BusyQ(new RoomDetail(pollAvail.roomNo, pollAvail.count + 1), newStart + duration));
+                BusyQ pollBusy = busyQ.poll();
+                busyQ.add(new BusyQ(new RoomDetail(pollBusy.roomDetail.roomNo, pollBusy.roomDetail.count + 1), newStart + duration));
 
             } else {
                 RoomDetail pollAvail = availQ.poll();
@@ -68,16 +59,8 @@ public class MeetingRoomsIII {
         }
 
 
-        List<RoomDetail> sorted = availQ.stream().sorted(new Comparator<RoomDetail>() {
-            @Override
-            public int compare(RoomDetail a1, RoomDetail a2) {
-                if (a1.count != a2.count) return Integer.compare(a2.count, a1.count);
-                else return Integer.compare(a1.roomNo, a2.roomNo);
-            }
-        }).toList();
+        return availQ.stream().sorted((a, b) -> a.count != b.count ? b.count - a.count : a.roomNo - b.roomNo).toList().get(0).roomNo;
 
-
-        return sorted.get(0).roomNo;
     }
 }
 
