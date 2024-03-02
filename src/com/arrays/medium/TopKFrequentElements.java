@@ -1,13 +1,10 @@
 package com.arrays.medium;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.PriorityQueue;
+import java.util.*;
 
 public class TopKFrequentElements {
     public static void main(String[] args) {
-        int[] nums = {1, 1, 1, 2, 2, 3};
+        int[] nums = {1,1,1,2,2,3};
         int k = 2;
 
         int[] result = solve(nums, k);
@@ -15,6 +12,35 @@ public class TopKFrequentElements {
     }
 
     private static int[] solve(int[] nums, int k) {
+
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int ele : nums) {
+            map.put(ele, map.getOrDefault(ele, 0) + 1);
+        }
+
+        ArrayList<Integer>[] countArray = new ArrayList[nums.length + 1];
+        for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+            if (countArray[entry.getValue()] == null)
+                countArray[entry.getValue()] = new ArrayList();
+            countArray[entry.getValue()].add(entry.getKey());
+        }
+
+        int[] result = new int[k];
+        int index = 0;
+        for (int i = nums.length; i >= 0; i--) {
+            if (countArray[i] != null) {
+                int size = countArray[i].size();
+                for (int val : countArray[i]) {
+                    result[index++] = val;
+                    if (index == k)
+                        return result;
+                }
+            }
+        }
+        return result;
+    }
+
+    private static int[] solve1(int[] nums, int k) {
 
         Map<Integer, Integer> map = new HashMap<>();
         for (int ele : nums) {
