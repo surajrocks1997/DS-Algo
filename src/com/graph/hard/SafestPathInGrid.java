@@ -4,7 +4,7 @@ import java.util.*;
 
 //https://leetcode.com/problems/find-the-safest-path-in-a-grid/description/
 
-public class demo {
+class SafestPathInGrid {
 
     public static void main(String[] args) {
         List<List<Integer>> grid = new ArrayList<>();
@@ -22,14 +22,14 @@ public class demo {
         int m = grid.size();
         int n = grid.get(0).size();
 
-        Queue<Tuple> queue = new LinkedList<>();
+        Queue<Tuple_SafestPathInGrid> queue = new LinkedList<>();
         int[][] visited = new int[m][n];
         int[][] ans = new int[m][n];
 
         for (int row = 0; row < m; row++) {
             for (int col = 0; col < n; col++) {
                 if (grid.get(row).get(col) == 1) {
-                    queue.add(new Tuple(0, row, col));
+                    queue.add(new Tuple_SafestPathInGrid(0, row, col));
                     visited[row][col] = 1;
                 }
             }
@@ -39,7 +39,7 @@ public class demo {
         int[] delcol = {0, 1, 0, -1};
 
         while (!queue.isEmpty()) {
-            Tuple p = queue.poll();
+            Tuple_SafestPathInGrid p = queue.poll();
             int r = p.row;
             int c = p.col;
             int distance = p.distance;
@@ -51,7 +51,7 @@ public class demo {
                 if (nrow >= 0 && nrow < m && ncol >= 0 && ncol < n) {
                     if (visited[nrow][ncol] == 0) {
                         ans[nrow][ncol] = distance + 1;
-                        queue.add(new Tuple(ans[nrow][ncol], nrow, ncol));
+                        queue.add(new Tuple_SafestPathInGrid(ans[nrow][ncol], nrow, ncol));
                         visited[nrow][ncol] = 1;
                     } else {
                         ans[nrow][ncol] = Math.min(ans[nrow][ncol], distance + 1);
@@ -60,12 +60,12 @@ public class demo {
             }
         }
 
-        PriorityQueue<Tuple> pq = new PriorityQueue<Tuple>((a, b) -> b.distance - a.distance);
-        pq.add(new Tuple(ans[0][0], 0, 0));
+        PriorityQueue<Tuple_SafestPathInGrid> pq = new PriorityQueue<Tuple_SafestPathInGrid>((a, b) -> b.distance - a.distance);
+        pq.add(new Tuple_SafestPathInGrid(ans[0][0], 0, 0));
         visited[0][0] = 0;
 
         while (!pq.isEmpty()) {
-            Tuple poll = pq.poll();
+            Tuple_SafestPathInGrid poll = pq.poll();
             int row = poll.row;
             int col = poll.col;
             int distance = poll.distance;
@@ -79,7 +79,7 @@ public class demo {
 
                 if (nrow >= 0 && nrow < m && ncol >= 0 && ncol < n) {
                     if (visited[nrow][ncol] == 1) {
-                        pq.add(new Tuple(Math.min(distance, ans[nrow][ncol]), nrow, ncol));
+                        pq.add(new Tuple_SafestPathInGrid(Math.min(distance, ans[nrow][ncol]), nrow, ncol));
                         visited[nrow][ncol] = 0;
                     }
                 }
@@ -90,13 +90,13 @@ public class demo {
     }
 }
 
-class Tuple {
+class Tuple_SafestPathInGrid {
 
     int distance;
     int row;
     int col;
 
-    public Tuple(int distance, int row, int col) {
+    public Tuple_SafestPathInGrid(int distance, int row, int col) {
         this.distance = distance;
         this.row = row;
         this.col = col;
