@@ -31,11 +31,13 @@ public class RootToLeafPath {
         current.add(root.data);
         if (isLeaf(root)) {
             result.add(new ArrayList<>(current));
+            current.remove(current.size() - 1);
             return;
         }
 
-        solve(root.left, result, new ArrayList<>(current));
-        solve(root.right, result, new ArrayList<>(current));
+        solve(root.left, result, current);
+        solve(root.right, result, current);
+        current.remove(current.size() - 1);
 
     }
 
