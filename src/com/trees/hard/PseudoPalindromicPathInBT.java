@@ -44,7 +44,7 @@ public class PseudoPalindromicPathInBT {
     private static int countOdd(int[] digits) {
         int cnt = 0;
         for (int i = 1; i < 10; ++i) {
-            if ((digits[i] & 1) == 1) cnt++;
+            if ((digits[i] % 2) == 1) cnt++;
         }
         return cnt;
     }
