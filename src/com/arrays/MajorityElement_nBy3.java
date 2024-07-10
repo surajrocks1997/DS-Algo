@@ -1,13 +1,11 @@
 package com.arrays;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class MajorityElement_nBy3 {
     public static void main(String[] args) {
         int[] arr = {2, 1, 1, 3, 1, 4, 5, 6};
-        List<Integer> result = solve(arr);
+        List<Integer> result = solve1(arr);
         System.out.println(result);
     }
 
@@ -45,5 +43,36 @@ public class MajorityElement_nBy3 {
 
         Collections.sort(result);
         return result;
+    }
+
+    private static List<Integer> solve1(int[] nums) {
+        int n = nums.length;
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int ele : nums) {
+            map.put(ele, map.getOrDefault(ele, 0) + 1);
+            if (map.size() > 2) removeOne(map);
+        }
+
+        List<Integer> res = new ArrayList<>();
+        if (map.isEmpty()) return res;
+        for (int ele : map.keySet()) {
+            int count = 0;
+            for (int element : nums)
+                count += element == ele ? 1 : 0;
+            if (count > n / 3)
+                res.add(ele);
+        }
+        return res;
+
+    }
+
+    private static void removeOne(Map<Integer, Integer> map) {
+        for (int ele : map.keySet()) {
+            map.put(ele, map.get(ele) - 1);
+        }
+
+        List<Integer> list = map.keySet().stream().toList();
+        for (int ele : list)
+            if (map.get(ele) == 0) map.remove(ele);
     }
 }
