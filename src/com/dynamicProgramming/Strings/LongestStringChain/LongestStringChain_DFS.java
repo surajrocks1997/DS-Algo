@@ -1,17 +1,68 @@
 package com.dynamicProgramming.Strings.LongestStringChain;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class LongestStringChain_DFS {
     public static void main(String[] args) {
         String[] words = {"lz", "aiodvi", "stp", "z", "qolsz", "edxfum", "stvf", "shgtp", "gilfefs", "sgilfgefs", "tp", "atnpuu", "atnpuuib", "nshgtph", "v", "qlsz", "eqolnsz", "ghphjykf", "vf", "adv", "qlz", "zstvf", "ghphjyf", "abiodvi", "aodvi", "ilffs", "fi", "fedxfum", "ilfs", "st", "nsihgtph", "shtp", "syt", "tvf", "sgilfefs", "av", "nshgtp", "nsihgtpmh", "v", "ifs", "sgilfgelfs", "aodv", "if", "gphjyf", "ilfefs", "atnpuui", "qolnsz"};
 
-        int result = solve(words);
+        int result = solve1(words);
         System.out.println(result);
     }
+
+    private static int solve1(String[] words) {
+        Arrays.sort(words, (o1, o2) -> o1.length() - o2.length());
+        Map<String, Integer> memo = new HashMap<>();
+        Map<Integer, List<String>> map = new HashMap<>();
+
+        for (String str : words) {
+            int length = str.length();
+            map.putIfAbsent(length, new ArrayList<>());
+            List<String> list = map.get(length);
+            list.add(str);
+        }
+
+        int max = 0;
+        for (String str : words) {
+            max = Math.max(max, 1 + helper(str, map, memo));
+        }
+        return max;
+    }
+
+    private static int helper(String word, Map<Integer, List<String>> map, Map<String, Integer> memo) {
+        if (!map.containsKey(word.length() + 1)) return 0;
+        if (memo.containsKey(word)) return memo.get(word);
+
+        List<String> list = map.get(word.length() + 1);
+        int count = 0;
+        for (String nextWord : list) {
+            if (isValidOneOff(word, nextWord)) {
+                count = Math.max(count, 1 + helper(nextWord, map, memo));
+            }
+        }
+
+        memo.put(word, count);
+        return count;
+    }
+
+    private static boolean isValidOneOff(String word, String nextWord) {
+        int n = word.length();
+        int m = nextWord.length();
+        int i = 0;
+        int j = 0;
+        int count = 0;
+        while (i < n && j < m && count <= 1) {
+            if (word.charAt(i) != nextWord.charAt(j)) {
+                count++;
+                j++;
+            } else {
+                i++;
+                j++;
+            }
+        }
+        return count <= 1;
+    }
+
 
     private static int solve(String[] words) {
         int n = words.length;
