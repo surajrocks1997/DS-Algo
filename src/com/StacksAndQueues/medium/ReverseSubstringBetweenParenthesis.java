@@ -31,6 +31,10 @@ public class ReverseSubstringBetweenParenthesis {
                 }
             }
         }
-        return stack.stream().map(Object::toString).collect(Collectors.joining(""));
+        StringBuilder sb = new StringBuilder();
+        while(!stack.isEmpty()){
+            sb.append(stack.pop());
+        }
+        return sb.reverse().toString();
     }
 }
