@@ -33,4 +33,29 @@ public class MinDeletionsToMakeStringBalanced {
         return res;
 
     }
+
+    private static int solve1(String s) {
+        int n = s.length();
+        int countA = 0;
+        int countB = 0;
+        char[] charArr = s.toCharArray();
+
+        for (int i = n - 1; i >= 0; i--) {
+            countA += charArr[i] == 'a' ? 1 : 0;
+        }
+
+        int res = n;
+        for (int i = 0; i < n; i++) {
+            if (charArr[i] == 'a')
+                countA--;
+
+            res = Math.min(res, countA + countB);
+
+            if (charArr[i] == 'b')
+                countB++;
+        }
+
+        return res;
+
+    }
 }
