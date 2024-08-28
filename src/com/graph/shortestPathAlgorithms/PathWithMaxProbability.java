@@ -35,7 +35,7 @@ public class PathWithMaxProbability {
             adj.get(edges[i][1]).add(new Node(succProb[i], edges[i][0]));
         }
 
-        PriorityQueue<Node> pq = new PriorityQueue<>(Collections.reverseOrder((a,b) -> Double.compare(a.prob, b.prob)));
+        PriorityQueue<Node> pq = new PriorityQueue<>((a,b) -> Double.compare(b.prob, a.prob));
         pq.add(new Node(1, start_node));
         double[] prob = new double[n];
         prob[start_node] = 1;
