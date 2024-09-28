@@ -1,5 +1,6 @@
 package com.SlidingWindow_2Pointer;
 
+// https://leetcode.com/problems/grumpy-bookstore-owner/description/
 public class GrumpyBookstoreOwner {
 
     public static void main(String[] args) {
@@ -7,8 +8,32 @@ public class GrumpyBookstoreOwner {
         int[] grumpy = {0, 1, 1};
         int minutes = 2;
 
-        int result = solve(customer, grumpy, minutes);
+        int result = solve1(customer, grumpy, minutes);
         System.out.println(result);
+    }
+
+    private static int solve1(int[] customer, int[] grumpy, int minutes) {
+        int n = customer.length;
+        int l = 0;
+        int window = 0;
+        int maxWindow = 0;
+        int satisfied = 0;
+
+        for (int r = 0; r < n; r++) {
+            if (grumpy[r] == 1)
+                window += customer[r];
+            else
+                satisfied += customer[r];
+
+            if (r - l + 1 > minutes) {
+                if (grumpy[l] == 1)
+                    window -= customer[l];
+                l++;
+            }
+
+            maxWindow = Math.max(window, maxWindow);
+        }
+        return satisfied + maxWindow;
     }
 
     private static int solve(int[] customers, int[] grumpy, int minutes) {
