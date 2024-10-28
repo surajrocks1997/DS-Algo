@@ -1,9 +1,9 @@
-package com.dynamicProgramming;
+package com.dynamicProgramming.sqaureSubmatrices;
 
 import java.util.Arrays;
 
 // https://leetcode.com/problems/count-square-submatrices-with-all-ones/description/
-public class CountSquareSubmatricesWithAllOnes {
+public class CountSquareSubmatricesWithAllOnes_mem {
     public static void main(String[] args) {
         int[][] matrix = {
                 {0, 1, 1, 1},
