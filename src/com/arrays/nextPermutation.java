@@ -4,7 +4,8 @@ import java.util.Arrays;
 
 public class nextPermutation {
     public static void main(String[] args) {
-        int[] arr = {2, 1, 5, 4, 3, 0, 0};
+//        int[] arr = {2, 1, 5, 4, 3, 0, 0};
+        int[] arr = {4, 2, 1, 3};
         solve(arr);
 
         for (int ele : arr) System.out.print(ele + " ");
@@ -24,7 +25,7 @@ public class nextPermutation {
             Arrays.sort(arr);
         } else {
             for (int index = i; index < n; index++) {
-                if (arr[index] > arr[i - 1] && arr[min] > arr[index])
+                if (arr[index] < arr[min] && arr[index] > arr[i - 1])
                     min = index;
             }
 
