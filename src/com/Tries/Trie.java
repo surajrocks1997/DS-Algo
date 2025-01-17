@@ -1,11 +1,15 @@
 package com.Tries;
 
 class Trie {
-    private final Node root;
+    private Node root;
 
     //Initialize your data structure here
     public Trie() {
         root = new Node();
+    }
+
+    public Node getRoot() {
+        return root;
     }
 
     //Inserts a word into the trie
@@ -60,7 +64,7 @@ class Trie {
 
 class Node {
     Node[] links = new Node[26];
-    boolean flag = false;
+    boolean isEnd = false;
 
     public Node() {
     }
@@ -78,10 +82,10 @@ class Node {
     }
 
     public void setEnd() {
-        flag = true;
+        isEnd = true;
     }
 
     public boolean isEnd() {
-        return flag;
+        return isEnd;
     }
 }
