@@ -27,7 +27,13 @@ public class TargetSum_Mem {
 
     private static int solve(int index, int target, int[] nums, int[][] dp) {
         if (index == 0) {
+            //This condition checks if both target and nums[0] are zero.
+            // If they are, there are two valid ways to achieve this:
+            // Assign +0 to nums[0].
+            // Assign -0 to nums[0]
             if (target == 0 && nums[index] == 0) return 2;
+            // target == 0 means you achieved the target and you can notPick this index
+            // target == nums[index] means you can pick it and you'll achieve the target
             if (target == 0 || target == nums[index]) return 1;
             return 0;
         }
