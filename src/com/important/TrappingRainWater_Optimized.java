@@ -10,30 +10,23 @@ public class TrappingRainWater_Optimized {
     private static int solve(int[] height) {
         int n = height.length;
         int left = 0;
-        int right = n - 1;
-        int result = 0;
-        int maxLeft = 0;
-        int maxRight = 0;
+        int right = n-1;
 
-        while (left <= right) {
-            if (height[left] <= height[right]) {
-                if (height[left] >= maxLeft)
-                    maxLeft = height[left];
-                else
-                    result += maxLeft - height[left];
+        int leftMax = 0;
+        int rightMax = 0;
 
-                left++;
+        int ans = 0;
 
-            } else {
-                if (height[right] >= maxRight)
-                    maxRight = height[right];
-                else
-                    result += maxRight - height[right];
+        while(left < right){
+            leftMax = Math.max(leftMax, height[left]);
+            rightMax = Math.max(rightMax, height[right]);
 
-                right--;
-            }
+            if(leftMax < rightMax){
+                ans += leftMax - height[left++];
+            } else
+                ans += rightMax - height[right--];
         }
 
-        return result;
+        return ans;
     }
 }
