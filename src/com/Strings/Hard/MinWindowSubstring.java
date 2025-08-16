@@ -14,7 +14,50 @@ public class MinWindowSubstring {
         System.out.println(result);
     }
 
+    // NOTE: Both methods solve and solve1 are equally efficient. solve1 solves using one Map and solve uses two Maps to track character matches
     private static String solve(String s, String t) {
+        int ns = s.length();
+        int nt = t.length();
+        if (nt > ns) return "";
+        int left = 0;
+        int right = 0;
+        Map<Character, Integer> map = new HashMap<>();
+        char[] tchar = t.toCharArray();
+        char[] schar = s.toCharArray();
+        for (char c : tchar)
+            map.put(c, map.getOrDefault(c, 0) + 1);
+        int minWindow = (int) 1e6;
+        int minLeft = 0;
+        int count = 0;
+        while (left <= right && right < ns) {
+            char c = schar[right];
+            if (map.containsKey(c)) {
+                map.put(c, map.get(c) - 1);
+                if (map.get(c) >= 0)
+                    count++;
+            }
+            while (count == nt) {
+                if (minWindow > right - left + 1) {
+                    minWindow = right - left + 1;
+                    minLeft = left;
+                }
+
+                c = schar[left];
+                if (map.containsKey(c)) {
+                    map.put(c, map.getOrDefault(c, 0) + 1);
+                    if (map.get(c) > 0)
+                        count--;
+                }
+                left++;
+            }
+            right++;
+        }
+
+
+        return minWindow > ns ? "" : s.substring(minLeft, minLeft + minWindow);
+    }
+
+    private static String solve1(String s, String t) {
         int tLen = t.length();
         int sLen = s.length();
         if (sLen < tLen) return "";
