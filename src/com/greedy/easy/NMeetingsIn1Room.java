@@ -21,11 +21,11 @@ public class NMeetingsIn1Room {
         list.sort(Comparator.comparingInt(a -> a.end));
 
         int count = 0;
-        int currentEnd = -1;
+        int lastEnd = -1;
         for (MeetingWithIndex current : list) {
-            if (currentEnd < current.start) {
+            if (lastEnd < current.start) {
                 count++;
-                currentEnd = current.end;
+                lastEnd = current.end;
             }
         }
 
