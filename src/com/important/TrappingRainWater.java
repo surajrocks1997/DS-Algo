@@ -1,5 +1,7 @@
 package com.important;
 
+import java.util.Arrays;
+
 public class TrappingRainWater {
     public static void main(String[] args) {
         int[] height = {0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1};
@@ -13,17 +15,21 @@ public class TrappingRainWater {
         int[] suffix = new int[n];
         prefix[0] = arr[0];
         for (int i = 1; i < n; i++) {
-            prefix[i] = Math.max(prefix[i - 1], arr[i]);
+            prefix[i] = Math.max(prefix[i - 1], arr[i - 1]);
         }
+        Arrays.stream(prefix).forEach(ele -> System.out.print(ele + " "));
+        System.out.println();
 
         suffix[n - 1] = arr[n - 1];
         for (int i = n - 2; i >= 0; i--) {
-            suffix[i] = Math.max(suffix[i + 1], arr[i]);
+            suffix[i] = Math.max(suffix[i + 1], arr[i + 1]);
         }
+        Arrays.stream(suffix).forEach(ele -> System.out.print(ele + " "));
 
         int waterTrapped = 0;
         for (int i = 0; i < n; i++) {
-            waterTrapped += Math.min(prefix[i], suffix[i]) - arr[i];
+            int res = Math.min(prefix[i], suffix[i]) - arr[i];
+            waterTrapped += Math.max(res, 0);
         }
         return waterTrapped;
     }
